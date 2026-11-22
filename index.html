@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0f6b73">
+<title>Bin Hooked 15 Yard Dumpster</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:ital,wght@0,600;0,700;1,700;1,800&family=Kaushan+Script&display=swap" rel="stylesheet">
+<style>
+/* Layout idea: dark top bar + sticky header, product gallery left / buy box right, spec table, info band, footer. Brand: teal on black with white lettering, from the Bin Hooked logo. */
+:root {
+  --black: #050708;
+  --panel: #0d1214;
+  --line: #1f2a2d;
+  --teal: #0f6b73;
+  --teal-bright: #1b9aa4;
+  --white: #ffffff;
+  --mute: #aebcc0;
+  --display: "Barlow Condensed", "Arial Narrow", Impact, sans-serif;
+  --body: "Barlow", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --script: "Kaushan Script", cursive;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0; background: var(--black); color: var(--white);
+  font-family: var(--body); font-size: 17px; line-height: 1.6;
+}
+a { color: inherit; }
+img { max-width: 100%; display: block; }
+:focus-visible { outline: 3px solid var(--teal-bright); outline-offset: 3px; }
+.wrap { max-width: 1180px; margin: 0 auto; padding: 0 20px; }
+
+/* top bar */
+.topbar { background: var(--teal); }
+.topbar .wrap { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding-top: 8px; padding-bottom: 8px; font-family: var(--display); font-weight: 700; letter-spacing: .06em; text-transform: uppercase; font-size: 16px; }
+.topbar a { text-decoration: none; }
+.topbar .tag { font-style: italic; }
+
+/* header */
+header.site { background: var(--black); border-bottom: 3px solid var(--teal); position: sticky; top: 0; z-index: 20; }
+header.site .wrap { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding-top: 10px; padding-bottom: 10px; }
+.brand img { height: 78px; width: 78px; object-fit: contain; }
+nav.main { display: flex; flex-wrap: wrap; gap: 6px 22px; align-items: center; }
+nav.main a { font-family: var(--display); font-weight: 600; text-transform: uppercase; letter-spacing: .06em; font-size: 18px; text-decoration: none; padding: 6px 0; border-bottom: 2px solid transparent; }
+nav.main a:hover { border-color: var(--teal-bright); }
+.btn { display: inline-block; font-family: var(--display); font-weight: 700; font-size: 20px; letter-spacing: .08em; text-transform: uppercase; text-decoration: none; background: var(--teal); color: var(--white); border: 2px solid var(--teal); padding: 10px 24px; border-radius: 4px; cursor: pointer; transition: background .15s, border-color .15s; line-height: 1.2; }
+.btn:hover { background: var(--teal-bright); border-color: var(--teal-bright); }
+.btn.ghost { background: transparent; border-color: var(--white); }
+.btn.ghost:hover { background: var(--white); color: var(--black); border-color: var(--white); }
+.header-cta { display: flex; align-items: center; gap: 16px; }
+.header-phone { text-align: right; line-height: 1.15; }
+.header-phone small { display: block; font-family: var(--display); letter-spacing: .1em; text-transform: uppercase; color: var(--mute); font-size: 14px; }
+.header-phone a { font-family: var(--display); font-weight: 700; font-size: 26px; text-decoration: none; }
+.menu-toggle { display: none; }
+
+/* breadcrumb */
+.crumbs { padding: 18px 0 0; font-size: 14px; color: var(--mute); font-family: var(--display); letter-spacing: .08em; text-transform: uppercase; }
+.crumbs a { text-decoration: none; }
+.crumbs a:hover { color: var(--white); }
+.crumbs span { margin: 0 8px; color: var(--teal-bright); }
+
+/* product */
+.product { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 44px; padding: 26px 0 56px; align-items: start; }
+.gallery .main-shot { position: relative; border: 2px solid var(--line); border-radius: 6px; overflow: hidden; background: var(--panel); aspect-ratio: 4 / 3; }
+.gallery .main-shot img { width: 100%; height: 100%; object-fit: cover; }
+.thumbs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 12px; }
+.thumbs button { padding: 0; border: 2px solid var(--line); border-radius: 4px; overflow: hidden; background: var(--panel); cursor: pointer; aspect-ratio: 4 / 3; }
+.thumbs button[aria-pressed="true"] { border-color: var(--teal-bright); }
+.thumbs img { width: 100%; height: 100%; object-fit: cover; }
+.thumbs button.logo-thumb img { object-fit: contain; background: #000; }
+
+.buy h1 { font-family: var(--display); font-style: italic; font-weight: 800; text-transform: uppercase; font-size: clamp(38px, 5vw, 58px); line-height: 1; margin: 6px 0 4px; text-wrap: balance; }
+.buy h1 em { font-style: italic; color: var(--teal-bright); }
+.script { font-family: var(--script); color: var(--teal-bright); font-size: 24px; margin: 0 0 14px; }
+.price { display: flex; align-items: baseline; gap: 12px; margin: 14px 0 6px; padding: 14px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.price strong { font-family: var(--display); font-size: 40px; font-weight: 700; line-height: 1; }
+.price span { color: var(--mute); }
+.lede { color: #dbe5e8; margin: 16px 0 20px; }
+table.specs { width: 100%; border-collapse: collapse; margin: 0 0 24px; font-variant-numeric: tabular-nums; }
+table.specs th, table.specs td { text-align: left; padding: 11px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+table.specs th { font-family: var(--display); font-weight: 600; letter-spacing: .08em; text-transform: uppercase; font-size: 16px; color: var(--mute); width: 42%; }
+table.specs tr:nth-child(odd) { background: var(--panel); }
+table.specs td { font-weight: 600; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.actions .btn { flex: 1 1 200px; text-align: center; }
+.cart-note { display: none; margin-top: 16px; padding: 14px 16px; background: var(--panel); border-left: 4px solid var(--teal-bright); border-radius: 0 4px 4px 0; }
+.cart-note.show { display: block; }
+.cart-note a { font-weight: 700; }
+.checks { list-style: none; padding: 0; margin: 22px 0 0; display: grid; gap: 8px; }
+.checks li { display: flex; gap: 10px; align-items: center; font-family: var(--display); font-weight: 600; text-transform: uppercase; letter-spacing: .05em; font-size: 18px; }
+.checks svg { flex: none; width: 22px; height: 22px; color: var(--teal-bright); }
+
+/* detail band */
+.band { background: var(--panel); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.cols { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; padding: 52px 0; }
+.cols h2 { font-family: var(--display); font-weight: 700; text-transform: uppercase; letter-spacing: .05em; font-size: 28px; margin: 0 0 10px; padding-bottom: 10px; border-bottom: 3px solid var(--teal); display: inline-block; }
+.cols p, .cols li { color: #dbe5e8; }
+.cols ul { padding-left: 20px; margin: 0; }
+.cols li { margin-bottom: 4px; }
+.cols .no li::marker { color: #d65a5a; }
+.cols .yes li::marker { color: var(--teal-bright); }
+
+/* promo */
+.promo { position: relative; overflow: hidden; }
+.promo .wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 40px; align-items: center; padding-top: 56px; padding-bottom: 56px; }
+.promo img.truck { border-radius: 6px; border: 2px solid var(--line); }
+.promo h2 { font-family: var(--display); font-style: italic; font-weight: 800; text-transform: uppercase; font-size: clamp(34px, 4.4vw, 52px); line-height: 1.02; margin: 0 0 14px; text-wrap: balance; }
+.promo h2 span { color: var(--teal-bright); }
+.promo p { color: #dbe5e8; margin: 0 0 22px; max-width: 52ch; }
+.callbox { background: linear-gradient(135deg, var(--teal) 0%, #0a4a50 100%); padding: 26px; border-radius: 6px; text-align: center; margin-top: 8px; }
+.callbox small { font-family: var(--display); letter-spacing: .14em; text-transform: uppercase; font-size: 18px; font-style: italic; font-weight: 700; display: block; }
+.callbox a { font-family: var(--display); font-style: italic; font-weight: 800; font-size: clamp(40px, 7vw, 64px); text-decoration: none; line-height: 1.1; display: block; }
+
+/* footer */
+footer { background: #000; border-top: 3px solid var(--teal); }
+footer .wrap { display: grid; grid-template-columns: auto 1fr auto; gap: 32px; align-items: center; padding-top: 34px; padding-bottom: 34px; }
+footer img { height: 110px; width: 110px; object-fit: contain; }
+footer nav { display: flex; flex-wrap: wrap; gap: 8px 22px; }
+footer nav a { font-family: var(--display); letter-spacing: .06em; text-transform: uppercase; text-decoration: none; font-weight: 600; font-size: 17px; color: var(--mute); }
+footer nav a:hover { color: var(--white); }
+footer .contact { text-align: right; }
+footer .contact a { font-family: var(--display); font-weight: 700; font-size: 28px; text-decoration: none; }
+.legal { border-top: 1px solid var(--line); color: var(--mute); font-size: 14px; padding: 14px 20px; text-align: center; }
+
+@media (max-width: 960px) {
+  .product, .promo .wrap { grid-template-columns: 1fr; }
+  .cols { grid-template-columns: 1fr; padding: 40px 0; }
+  .header-phone { display: none; }
+  .menu-toggle { display: inline-block; }
+  nav.main { display: none; position: absolute; left: 0; right: 0; top: 100%; background: var(--black); border-bottom: 3px solid var(--teal); flex-direction: column; align-items: flex-start; padding: 12px 20px 18px; gap: 4px; }
+  nav.main.open { display: flex; }
+  header.site .wrap { position: relative; }
+  footer .wrap { grid-template-columns: 1fr; justify-items: center; text-align: center; }
+  footer nav { justify-content: center; }
+  footer .contact { text-align: center; }
+}
+@media (max-width: 480px) {
+  .topbar .tag { display: none; }
+  .topbar .wrap { justify-content: center; }
+  .brand img { height: 62px; width: 62px; }
+  .btn { font-size: 18px; padding: 9px 16px; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .btn { transition: none; } }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <span class="tag">Big enough to get the job done. Small enough to care.</span>
+    <a href="tel:8034272438">Tap to call: 803-427-2438</a>
+  </div>
+</div>
+
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Bin Hooked Dumpster Rentals LLC home"><img src="logo.png" alt="Bin Hooked Dumpster Rentals LLC logo"></a>
+    <nav class="main" id="mainnav" aria-label="Main">
+      <a href="#top">Home</a>
+      <a href="#top" aria-current="page">Dumpster Rental</a>
+      <a href="#details">What Goes In</a>
+      <a href="#service">Service</a>
+      <a href="#contact">Contact Us</a>
+    </nav>
+    <div class="header-cta">
+      <div class="header-phone"><small>Tap to call now</small><a href="tel:8034272438">803-427-2438</a></div>
+      <a class="btn" href="#contact">Book Now</a>
+      <button class="btn ghost menu-toggle" id="menubtn" aria-expanded="false" aria-controls="mainnav" type="button">Menu</button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <div class="wrap">
+    <div class="crumbs"><a href="#top">Home</a><span>/</span><a href="#top">Dumpster Rental</a><span>/</span>15 Yard Dumpster</div>
+
+    <section class="product" aria-label="15 yard dumpster">
+      <div class="gallery">
+        <div class="main-shot"><img id="mainimg" src="bin.jpg" alt="Black Bin Hooked roll-off dumpster sitting in a field"></div>
+        <div class="thumbs">
+          <button type="button" aria-pressed="true" data-src="bin.jpg" data-alt="Black Bin Hooked roll-off dumpster sitting in a field" aria-label="Show dumpster photo"><img src="bin.jpg" alt=""></button>
+          <button type="button" aria-pressed="false" data-src="truck.jpg" data-alt="Bin Hooked roll-off truck at a home construction site" aria-label="Show delivery truck"><img src="truck.jpg" alt=""></button>
+          <button type="button" class="logo-thumb" aria-pressed="false" data-src="logo.png" data-alt="Bin Hooked Dumpster Rentals LLC logo" aria-label="Show logo"><img src="logo.png" alt=""></button>
+        </div>
+      </div>
+
+      <div class="buy">
+        <p class="script">Bin Hooked Dumpster Rentals</p>
+        <h1>15 Yard Dumpster <em>(Concrete Only)</em></h1>
+        <div class="price"><strong>Call for pricing</strong><span>delivery and pickup included</span></div>
+        <p class="lede">Our 15 yard dumpster is built for heavy, dense loads like concrete, brick and asphalt. It holds about 6 pickup truck loads, and we handle prompt delivery and pickup so your project keeps moving.</p>
+        <table class="specs">
+          <tbody>
+            <tr><th scope="row">Size</th><td>14'L x 5'W x 4'6"H</td></tr>
+            <tr><th scope="row">Capacity</th><td>15 cubic yards</td></tr>
+            <tr><th scope="row">Rental period</th><td>Up to 7 days</td></tr>
+            <tr><th scope="row">Time extension</th><td>Ask us for the daily rate</td></tr>
+            <tr><th scope="row">Weight included</th><td>Ask us for your weight allowance</td></tr>
+            <tr><th scope="row">Extra weight</th><td>Billed per ton over the allowance</td></tr>
+          </tbody>
+        </table>
+        <div class="actions">
+          <button class="btn" id="addcart" type="button">Add to Cart</button>
+          <a class="btn ghost" href="tel:8034272438">Call 803-427-2438</a>
+        </div>
+        <div class="cart-note" id="cartnote" role="status">Added to your request. Call or text <a href="tel:8034272438">803-427-2438</a> with your address and delivery date and we will confirm your booking.</div>
+        <ul class="checks">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m7.5 12.5 3 3 6-7"/></svg>Residential &amp; commercial</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m7.5 12.5 3 3 6-7"/></svg>Multiple sizes available</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m7.5 12.5 3 3 6-7"/></svg>Fast, reliable service</li>
+        </ul>
+      </div>
+    </section>
+  </div>
+
+  <section class="band" id="details">
+    <div class="wrap cols">
+      <div class="yes">
+        <h2>Good for</h2>
+        <ul>
+          <li>Concrete slabs, driveways and sidewalks</li>
+          <li>Brick, block and asphalt</li>
+          <li>Dirt, rock and gravel</li>
+          <li>Foundation and patio tear-outs</li>
+        </ul>
+      </div>
+      <div class="no">
+        <h2>Keep out</h2>
+        <ul>
+          <li>Mixed household trash</li>
+          <li>Paint, chemicals and oil</li>
+          <li>Tires and batteries</li>
+          <li>Appliances with freon</li>
+        </ul>
+      </div>
+      <div>
+        <h2>How it works</h2>
+        <ul>
+          <li>Call or text to pick a size and date</li>
+          <li>We drop the bin where you need it</li>
+          <li>Fill it up within your rental period</li>
+          <li>We haul it away</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="promo" id="service">
+    <div class="wrap">
+      <img class="truck" src="truck.jpg" alt="Bin Hooked white roll-off truck carrying a black dumpster at a new home build" loading="lazy">
+      <div>
+        <h2>Big enough to get the job done. <span>Small enough to care.</span></h2>
+        <p>Bin Hooked is a local roll-off dumpster company. Whether you are clearing a job site or cleaning out the property, you talk to the people who deliver the bin.</p>
+        <div class="callbox" id="contact">
+          <small>Call or text today!</small>
+          <a href="tel:8034272438">803-427-2438</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <img src="logo.png" alt="Bin Hooked Dumpster Rentals LLC">
+    <nav aria-label="Footer">
+      <a href="#top">Home</a>
+      <a href="#top">Dumpster Rental</a>
+      <a href="#details">What Goes In</a>
+      <a href="#service">Service</a>
+      <a href="#contact">Contact Us</a>
+    </nav>
+    <div class="contact"><a href="tel:8034272438">803-427-2438</a></div>
+  </div>
+  <div class="legal">&copy; Bin Hooked Dumpster Rentals LLC. All rights reserved.</div>
+</footer>
+
+<script>
+(function () {
+  var main = document.getElementById('mainimg');
+  var thumbs = document.querySelectorAll('.thumbs button');
+  thumbs.forEach(function (b) {
+    b.addEventListener('click', function () {
+      main.src = b.getAttribute('data-src');
+      main.alt = b.getAttribute('data-alt');
+      main.style.objectFit = b.classList.contains('logo-thumb') ? 'contain' : 'cover';
+      main.parentNode.style.background = b.classList.contains('logo-thumb') ? '#000' : '';
+      thumbs.forEach(function (o) { o.setAttribute('aria-pressed', o === b ? 'true' : 'false'); });
+    });
+  });
+  document.getElementById('addcart').addEventListener('click', function () {
+    document.getElementById('cartnote').classList.add('show');
+  });
+  var mb = document.getElementById('menubtn'), nav = document.getElementById('mainnav');
+  mb.addEventListener('click', function () {
+    var open = nav.classList.toggle('open');
+    mb.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  nav.addEventListener('click', function () { nav.classList.remove('open'); mb.setAttribute('aria-expanded', 'false'); });
+})();
+</script>
+</body>
+</html>
