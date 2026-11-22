@@ -3,199 +3,403 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#0f6b73">
-<title>Bin Hooked 15 Yard Dumpster</title>
+<meta name="theme-color" content="#071012">
+<meta name="description" content="Bin Hooked Dumpster Rentals LLC drops 15-yard roll-off dumpsters for concrete and heavy debris. Call or text 803-427-2438, or request a delivery date.">
+<title>Bin Hooked Dumpster Rentals | Request a Drop-Off</title>
+<link rel="icon" href="images/logo.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:ital,wght@0,600;0,700;1,700;1,800&family=Kaushan+Script&display=swap" rel="stylesheet">
 <style>
-/* Layout idea: dark top bar + sticky header, product gallery left / buy box right, spec table, info band, footer. Brand: teal on black with white lettering, from the Bin Hooked logo. */
 :root {
-  --black: #050708;
-  --panel: #0d1214;
-  --line: #1f2a2d;
-  --teal: #0f6b73;
-  --teal-bright: #1b9aa4;
-  --white: #ffffff;
-  --mute: #aebcc0;
+  --black: #071012;
+  --ink: #f4f8f8;
+  --text: #e5eef0;
+  --muted: #b7c6ca;
+  --teal: #12818b;
+  --teal-bright: #3ec9d4;
+  --teal-deep: #0b555c;
+  --line: rgba(232, 244, 246, 0.12);
+  --card: #10181b;
+  --danger: #ffb0a4;
   --display: "Barlow Condensed", "Arial Narrow", Impact, sans-serif;
-  --body: "Barlow", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --body: "Barlow", system-ui, "Segoe UI", sans-serif;
   --script: "Kaushan Script", cursive;
+  --shadow: 0 24px 60px rgba(0, 0, 0, 0.38);
+  --radius: 18px;
   color-scheme: dark;
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body {
-  margin: 0; background: var(--black); color: var(--white);
-  font-family: var(--body); font-size: 17px; line-height: 1.6;
+  margin: 0;
+  background:
+    radial-gradient(900px 420px at 100% -10%, rgba(18, 129, 139, 0.22), transparent 55%),
+    var(--black);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 17px;
+  line-height: 1.6;
 }
-a { color: inherit; }
 img { max-width: 100%; display: block; }
+a { color: inherit; }
+button, input, select, textarea { font: inherit; color: inherit; }
 :focus-visible { outline: 3px solid var(--teal-bright); outline-offset: 3px; }
-.wrap { max-width: 1180px; margin: 0 auto; padding: 0 20px; }
+[hidden] { display: none !important; }
+.wrap { width: min(1140px, calc(100% - 40px)); margin: 0 auto; }
+.skip {
+  position: absolute; left: 12px; top: -48px; z-index: 80;
+  background: var(--teal); color: white; padding: 8px 14px; border-radius: 8px; text-decoration: none;
+}
+.skip:focus { top: 12px; }
 
-/* top bar */
-.topbar { background: var(--teal); }
-.topbar .wrap { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding-top: 8px; padding-bottom: 8px; font-family: var(--display); font-weight: 700; letter-spacing: .06em; text-transform: uppercase; font-size: 16px; }
+.topbar { background: linear-gradient(90deg, var(--teal-deep), var(--teal)); }
+.topbar .wrap {
+  display: flex; justify-content: space-between; align-items: center; gap: 16px;
+  padding: 8px 0; font-family: var(--display); font-weight: 700; letter-spacing: .08em;
+  text-transform: uppercase; font-size: 15px;
+}
 .topbar a { text-decoration: none; }
 .topbar .tag { font-style: italic; }
 
-/* header */
-header.site { background: var(--black); border-bottom: 3px solid var(--teal); position: sticky; top: 0; z-index: 20; }
-header.site .wrap { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding-top: 10px; padding-bottom: 10px; }
-.brand img { height: 78px; width: 78px; object-fit: contain; }
-nav.main { display: flex; flex-wrap: wrap; gap: 6px 22px; align-items: center; }
-nav.main a { font-family: var(--display); font-weight: 600; text-transform: uppercase; letter-spacing: .06em; font-size: 18px; text-decoration: none; padding: 6px 0; border-bottom: 2px solid transparent; }
-nav.main a:hover { border-color: var(--teal-bright); }
-.btn { display: inline-block; font-family: var(--display); font-weight: 700; font-size: 20px; letter-spacing: .08em; text-transform: uppercase; text-decoration: none; background: var(--teal); color: var(--white); border: 2px solid var(--teal); padding: 10px 24px; border-radius: 4px; cursor: pointer; transition: background .15s, border-color .15s; line-height: 1.2; }
-.btn:hover { background: var(--teal-bright); border-color: var(--teal-bright); }
-.btn.ghost { background: transparent; border-color: var(--white); }
-.btn.ghost:hover { background: var(--white); color: var(--black); border-color: var(--white); }
-.header-cta { display: flex; align-items: center; gap: 16px; }
-.header-phone { text-align: right; line-height: 1.15; }
-.header-phone small { display: block; font-family: var(--display); letter-spacing: .1em; text-transform: uppercase; color: var(--mute); font-size: 14px; }
+header.site {
+  position: sticky; top: 0; z-index: 40;
+  background: rgba(7, 16, 18, 0.86);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--line);
+}
+header.site .wrap {
+  display: flex; align-items: center; justify-content: space-between; gap: 20px;
+  padding: 10px 0; position: relative;
+}
+.brand { display: flex; align-items: center; text-decoration: none; flex: none; }
+.brand img { height: 76px; width: 76px; object-fit: cover; border-radius: 50%; border: 2px solid rgba(62, 201, 212, 0.45); }
+nav.main { display: flex; flex-wrap: wrap; gap: 4px 22px; align-items: center; }
+nav.main a {
+  font-family: var(--display); font-weight: 600; text-transform: uppercase; letter-spacing: .07em;
+  font-size: 17px; text-decoration: none; padding: 6px 0; border-bottom: 2px solid transparent;
+}
+nav.main a:hover { border-color: var(--teal-bright); color: var(--teal-bright); }
+.header-cta { display: flex; align-items: center; gap: 14px; }
+.header-phone { text-align: right; line-height: 1.1; }
+.header-phone small {
+  display: block; font-family: var(--display); letter-spacing: .12em; text-transform: uppercase;
+  color: var(--muted); font-size: 13px;
+}
 .header-phone a { font-family: var(--display); font-weight: 700; font-size: 26px; text-decoration: none; }
-.menu-toggle { display: none; }
+.btn.menu-toggle { display: none; }
 
-/* breadcrumb */
-.crumbs { padding: 18px 0 0; font-size: 14px; color: var(--mute); font-family: var(--display); letter-spacing: .08em; text-transform: uppercase; }
-.crumbs a { text-decoration: none; }
-.crumbs a:hover { color: var(--white); }
-.crumbs span { margin: 0 8px; color: var(--teal-bright); }
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  font-family: var(--display); font-weight: 700; font-size: 18px; letter-spacing: .08em;
+  text-transform: uppercase; text-decoration: none; background: var(--teal); color: white;
+  border: 2px solid var(--teal); padding: 12px 22px; border-radius: 999px; cursor: pointer;
+  transition: background .15s, border-color .15s, transform .15s; line-height: 1;
+}
+.btn:hover { background: var(--teal-bright); border-color: var(--teal-bright); color: #042226; }
+.btn.ghost { background: transparent; border-color: rgba(255,255,255,.7); color: white; }
+.btn.ghost:hover { background: white; color: var(--black); border-color: white; }
+.btn.full { width: 100%; }
 
-/* product */
-.product { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 44px; padding: 26px 0 56px; align-items: start; }
-.gallery .main-shot { position: relative; border: 2px solid var(--line); border-radius: 6px; overflow: hidden; background: var(--panel); aspect-ratio: 4 / 3; }
-.gallery .main-shot img { width: 100%; height: 100%; object-fit: cover; }
+.hero { padding: 36px 0 12px; }
+.hero-grid {
+  display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
+  gap: 36px; align-items: center;
+}
+.hero-photo {
+  margin: 0; border-radius: 22px; overflow: hidden; border: 1px solid var(--line);
+  box-shadow: var(--shadow); aspect-ratio: 4 / 3; background: #000;
+}
+.hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 62%; }
+#top, #dumpster, #details, #on-the-job, #request { scroll-margin-top: 96px; }
+.script { font-family: var(--script); color: var(--teal-bright); font-size: 26px; margin: 0 0 8px; }
+.hero h1 {
+  font-family: var(--display); font-style: italic; font-weight: 800; text-transform: uppercase;
+  font-size: clamp(52px, 7vw, 86px); line-height: .9; letter-spacing: .01em; margin: 0 0 16px;
+}
+.hero h1 em { font-style: italic; color: var(--teal-bright); display: block; font-size: .58em; margin-top: 10px; letter-spacing: .02em; }
+.lede { color: var(--text); margin: 0 0 22px; max-width: 48ch; font-size: 18px; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.pills { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 22px 0 0; }
+.pills li {
+  border: 1px solid var(--line); background: rgba(7, 16, 18, 0.55); backdrop-filter: blur(8px);
+  border-radius: 999px; padding: 7px 14px; font-family: var(--display); letter-spacing: .08em;
+  text-transform: uppercase; font-size: 15px;
+}
+
+.section { padding: 76px 0; }
+.section h2, .buy h2 {
+  font-family: var(--display); font-weight: 800; font-style: italic; text-transform: uppercase;
+  letter-spacing: .03em; font-size: clamp(32px, 4vw, 46px); line-height: .95; margin: 0 0 12px;
+}
+.eyebrow {
+  font-family: var(--display); letter-spacing: .16em; text-transform: uppercase; color: var(--teal-bright);
+  font-weight: 700; font-size: 15px; margin: 0 0 8px;
+}
+
+.product { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: 42px; align-items: start; }
+.main-shot {
+  background: #000; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden;
+  aspect-ratio: 3 / 2; box-shadow: var(--shadow);
+}
+.main-shot img { width: 100%; height: 100%; object-fit: cover; object-position: center 62%; }
+.main-shot img.contain { object-fit: contain; background: #000; }
 .thumbs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 12px; }
-.thumbs button { padding: 0; border: 2px solid var(--line); border-radius: 4px; overflow: hidden; background: var(--panel); cursor: pointer; aspect-ratio: 4 / 3; }
-.thumbs button[aria-pressed="true"] { border-color: var(--teal-bright); }
+.thumbs button {
+  padding: 0; border: 2px solid var(--line); border-radius: 12px; overflow: hidden; background: #000;
+  cursor: pointer; aspect-ratio: 3 / 2;
+}
+.thumbs button[aria-pressed="true"] { border-color: var(--teal-bright); box-shadow: 0 0 0 3px rgba(62, 201, 212, 0.28); }
 .thumbs img { width: 100%; height: 100%; object-fit: cover; }
-.thumbs button.logo-thumb img { object-fit: contain; background: #000; }
-
-.buy h1 { font-family: var(--display); font-style: italic; font-weight: 800; text-transform: uppercase; font-size: clamp(38px, 5vw, 58px); line-height: 1; margin: 6px 0 4px; text-wrap: balance; }
-.buy h1 em { font-style: italic; color: var(--teal-bright); }
-.script { font-family: var(--script); color: var(--teal-bright); font-size: 24px; margin: 0 0 14px; }
-.price { display: flex; align-items: baseline; gap: 12px; margin: 14px 0 6px; padding: 14px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-.price strong { font-family: var(--display); font-size: 40px; font-weight: 700; line-height: 1; }
-.price span { color: var(--mute); }
-.lede { color: #dbe5e8; margin: 16px 0 20px; }
-table.specs { width: 100%; border-collapse: collapse; margin: 0 0 24px; font-variant-numeric: tabular-nums; }
-table.specs th, table.specs td { text-align: left; padding: 11px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
-table.specs th { font-family: var(--display); font-weight: 600; letter-spacing: .08em; text-transform: uppercase; font-size: 16px; color: var(--mute); width: 42%; }
-table.specs tr:nth-child(odd) { background: var(--panel); }
+.thumbs button.fit button, .thumbs button.fit img { object-fit: contain; background: #000; }
+.thumbs button.fit img { object-fit: contain; }
+.buy .price {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px 16px;
+  margin: 8px 0 18px; padding: 14px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+}
+.buy .price strong { font-family: var(--display); font-size: 34px; font-weight: 700; line-height: 1; }
+.buy .price span { color: var(--muted); }
+table.specs { width: 100%; border-collapse: collapse; margin: 0 0 22px; }
+table.specs th, table.specs td { text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+table.specs th {
+  font-family: var(--display); font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
+  font-size: 15px; color: var(--muted); width: 42%;
+}
+table.specs tr:nth-child(odd) { background: rgba(255,255,255,.03); }
 table.specs td { font-weight: 600; }
 .actions { display: flex; flex-wrap: wrap; gap: 12px; }
-.actions .btn { flex: 1 1 200px; text-align: center; }
-.cart-note { display: none; margin-top: 16px; padding: 14px 16px; background: var(--panel); border-left: 4px solid var(--teal-bright); border-radius: 0 4px 4px 0; }
-.cart-note.show { display: block; }
-.cart-note a { font-weight: 700; }
-.checks { list-style: none; padding: 0; margin: 22px 0 0; display: grid; gap: 8px; }
-.checks li { display: flex; gap: 10px; align-items: center; font-family: var(--display); font-weight: 600; text-transform: uppercase; letter-spacing: .05em; font-size: 18px; }
+.actions .btn { flex: 1 1 200px; }
+.checks { list-style: none; padding: 0; margin: 20px 0 0; display: grid; gap: 8px; }
+.checks li {
+  display: flex; gap: 10px; align-items: center; font-family: var(--display); font-weight: 600;
+  text-transform: uppercase; letter-spacing: .05em; font-size: 18px;
+}
 .checks svg { flex: none; width: 22px; height: 22px; color: var(--teal-bright); }
 
-/* detail band */
-.band { background: var(--panel); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-.cols { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; padding: 52px 0; }
-.cols h2 { font-family: var(--display); font-weight: 700; text-transform: uppercase; letter-spacing: .05em; font-size: 28px; margin: 0 0 10px; padding-bottom: 10px; border-bottom: 3px solid var(--teal); display: inline-block; }
-.cols p, .cols li { color: #dbe5e8; }
-.cols ul { padding-left: 20px; margin: 0; }
-.cols li { margin-bottom: 4px; }
-.cols .no li::marker { color: #d65a5a; }
-.cols .yes li::marker { color: var(--teal-bright); }
+.cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.card {
+  background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 26px 24px 22px; border-top: 3px solid var(--teal);
+}
+.card.keep { border-top-color: #d27a68; }
+.card h2 { font-size: 30px; }
+.card p, .card li { color: var(--text); }
+.card ul { margin: 0; padding-left: 18px; }
+.card li { margin: 0 0 6px; }
+.card.keep li::marker { color: #d27a68; }
+.card.yes li::marker { color: var(--teal-bright); }
 
-/* promo */
-.promo { position: relative; overflow: hidden; }
-.promo .wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 40px; align-items: center; padding-top: 56px; padding-bottom: 56px; }
-.promo img.truck { border-radius: 6px; border: 2px solid var(--line); }
-.promo h2 { font-family: var(--display); font-style: italic; font-weight: 800; text-transform: uppercase; font-size: clamp(34px, 4.4vw, 52px); line-height: 1.02; margin: 0 0 14px; text-wrap: balance; }
-.promo h2 span { color: var(--teal-bright); }
-.promo p { color: #dbe5e8; margin: 0 0 22px; max-width: 52ch; }
-.callbox { background: linear-gradient(135deg, var(--teal) 0%, #0a4a50 100%); padding: 26px; border-radius: 6px; text-align: center; margin-top: 8px; }
-.callbox small { font-family: var(--display); letter-spacing: .14em; text-transform: uppercase; font-size: 18px; font-style: italic; font-weight: 700; display: block; }
-.callbox a { font-family: var(--display); font-style: italic; font-weight: 800; font-size: clamp(40px, 7vw, 64px); text-decoration: none; line-height: 1.1; display: block; }
+.showcase {
+  display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: 36px; align-items: center;
+}
+.showcase img {
+  width: 100%; height: auto; border-radius: var(--radius); border: 1px solid var(--line); box-shadow: var(--shadow);
+}
+.showcase h2 span { display: block; color: var(--teal-bright); margin-top: 6px; }
+.showcase p { color: var(--text); margin: 0 0 18px; max-width: 48ch; }
+.callbox {
+  background: linear-gradient(145deg, var(--teal) 0%, var(--teal-deep) 100%);
+  padding: 22px 22px 16px; border-radius: var(--radius); text-align: center;
+}
+.callbox small {
+  font-family: var(--display); letter-spacing: .14em; text-transform: uppercase; font-size: 16px;
+  font-style: italic; font-weight: 700; display: block;
+}
+.callbox a {
+  font-family: var(--display); font-style: italic; font-weight: 800;
+  font-size: clamp(36px, 5vw, 56px); text-decoration: none; line-height: 1; display: block;
+}
 
-/* footer */
-footer { background: #000; border-top: 3px solid var(--teal); }
-footer .wrap { display: grid; grid-template-columns: auto 1fr auto; gap: 32px; align-items: center; padding-top: 34px; padding-bottom: 34px; }
-footer img { height: 110px; width: 110px; object-fit: contain; }
-footer nav { display: flex; flex-wrap: wrap; gap: 8px 22px; }
-footer nav a { font-family: var(--display); letter-spacing: .06em; text-transform: uppercase; text-decoration: none; font-weight: 600; font-size: 17px; color: var(--mute); }
-footer nav a:hover { color: var(--white); }
+.request {
+  display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 40px; align-items: start;
+}
+.request h2 { max-width: 12ch; }
+.ready { list-style: none; padding: 0; margin: 18px 0; display: grid; gap: 10px; }
+.ready li { display: flex; gap: 12px; align-items: baseline; color: var(--text); }
+.ready b {
+  font-family: var(--display); color: var(--teal-bright); font-size: 22px; letter-spacing: .04em; flex: none;
+}
+.side-call { margin-top: 8px; }
+.side-call a { font-family: var(--display); font-weight: 800; font-size: 36px; text-decoration: none; letter-spacing: .02em; }
+
+.form-card {
+  background: linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.02));
+  border: 1px solid var(--line); border-radius: 22px; padding: 26px; box-shadow: var(--shadow);
+}
+.fields { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 16px; }
+.field label { display: block; font-weight: 600; margin-bottom: 6px; font-size: 15px; }
+.field label span { color: var(--teal-bright); }
+.field input, .field select, .field textarea {
+  width: 100%; background: #0b1113; border: 1px solid #2c3c40; border-radius: 12px;
+  padding: 12px 13px; color: var(--ink);
+}
+.field textarea { min-height: 110px; resize: vertical; }
+.field input:focus, .field select:focus, .field textarea:focus {
+  outline: none; border-color: var(--teal-bright); box-shadow: 0 0 0 3px rgba(62, 201, 212, 0.28);
+}
+.field input[aria-invalid="true"], .field select[aria-invalid="true"], .field textarea[aria-invalid="true"] {
+  border-color: var(--danger);
+}
+.field-error { color: var(--danger); font-size: 14px; margin: 6px 0 0; }
+.field-error:empty { display: none; }
+.span-2 { grid-column: 1 / -1; }
+.consent { display: flex; gap: 12px; align-items: flex-start; color: var(--text); font-size: 15px; }
+.consent input { width: 1.15rem; height: 1.15rem; margin-top: .25rem; accent-color: var(--teal-bright); flex: none; }
+.form-note { color: var(--muted); font-size: 14px; margin: 12px 0 0; }
+.hp { position: absolute; left: -9999px; height: 0; overflow: hidden; }
+
+.thanks h3 {
+  font-family: var(--display); font-style: italic; text-transform: uppercase; font-size: 36px;
+  line-height: .95; margin: 0 0 8px;
+}
+.thanks h3:focus { outline: none; }
+.summary {
+  display: grid; grid-template-columns: 120px 1fr; gap: 8px 14px; margin: 16px 0 18px;
+  padding: 16px; background: rgba(0,0,0,.28); border-radius: 14px;
+}
+.summary dt {
+  margin: 0; color: var(--muted); font-family: var(--display); letter-spacing: .08em;
+  text-transform: uppercase; font-size: 14px;
+}
+.summary dd { margin: 0; font-weight: 600; }
+.thanks-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.copy-status { min-height: 1.2em; color: var(--teal-bright); font-size: 14px; margin: 8px 0 0; }
+
+footer { background: #05080a; border-top: 1px solid var(--line); }
+footer .wrap {
+  display: grid; grid-template-columns: auto 1fr auto; gap: 28px; align-items: center; padding: 32px 0;
+}
+footer .brand img { height: 96px; width: 96px; }
+footer nav { display: flex; flex-wrap: wrap; gap: 8px 20px; }
+footer nav a {
+  font-family: var(--display); letter-spacing: .06em; text-transform: uppercase; text-decoration: none;
+  font-weight: 600; font-size: 16px; color: var(--muted);
+}
+footer nav a:hover { color: white; }
 footer .contact { text-align: right; }
 footer .contact a { font-family: var(--display); font-weight: 700; font-size: 28px; text-decoration: none; }
-.legal { border-top: 1px solid var(--line); color: var(--mute); font-size: 14px; padding: 14px 20px; text-align: center; }
+.legal { border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; padding: 14px 20px 22px; text-align: center; }
 
 @media (max-width: 960px) {
-  .product, .promo .wrap { grid-template-columns: 1fr; }
-  .cols { grid-template-columns: 1fr; padding: 40px 0; }
+  .product, .showcase, .request, .cards, .hero-grid { grid-template-columns: 1fr; }
+  .hero-photo { order: -1; }
   .header-phone { display: none; }
-  .menu-toggle { display: inline-block; }
-  nav.main { display: none; position: absolute; left: 0; right: 0; top: 100%; background: var(--black); border-bottom: 3px solid var(--teal); flex-direction: column; align-items: flex-start; padding: 12px 20px 18px; gap: 4px; }
-  nav.main.open { display: flex; }
-  header.site .wrap { position: relative; }
+  .btn.menu-toggle { display: inline-flex; }
+  nav.main {
+    display: none; position: absolute; left: -20px; right: -20px; top: 100%;
+    background: rgba(7, 16, 18, 0.98); border-bottom: 1px solid var(--line);
+    flex-direction: column; align-items: flex-start; padding: 8px 22px 16px; gap: 2px;
+  }
+  nav.main.open { display: flex; z-index: 30; background: #071012; }
   footer .wrap { grid-template-columns: 1fr; justify-items: center; text-align: center; }
   footer nav { justify-content: center; }
   footer .contact { text-align: center; }
+  .request h2 { max-width: none; }
 }
-@media (max-width: 480px) {
+@media (max-width: 640px) {
+  .wrap { width: min(1140px, calc(100% - 28px)); }
   .topbar .tag { display: none; }
   .topbar .wrap { justify-content: center; }
   .brand img { height: 62px; width: 62px; }
-  .btn { font-size: 18px; padding: 9px 16px; }
+  .fields { grid-template-columns: 1fr; }
+  .span-2 { grid-column: auto; }
+  .hero { padding-top: 18px; }
+  .hero h1 { font-size: 48px; }
+  .section { padding: 56px 0; }
+  .form-card { padding: 18px; }
+  .summary { grid-template-columns: 1fr; gap: 2px; }
+  .summary dd { margin-bottom: 8px; }
+  .btn { font-size: 16px; }
 }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .btn { transition: none; } }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .btn { transition: none; }
+}
 </style>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 
 <div class="topbar">
   <div class="wrap">
     <span class="tag">Big enough to get the job done. Small enough to care.</span>
-    <a href="tel:8034272438">Tap to call: 803-427-2438</a>
+    <a href="tel:+18034272438">Tap to call: 803-427-2438</a>
   </div>
 </div>
 
 <header class="site">
   <div class="wrap">
-    <a class="brand" href="#top" aria-label="Bin Hooked Dumpster Rentals LLC home"><img src="logo.png" alt="Bin Hooked Dumpster Rentals LLC logo"></a>
+    <a class="brand" href="#top" aria-label="Bin Hooked Dumpster Rentals LLC home">
+      <img src="images/logo.jpg" width="1254" height="1254" alt="Bin Hooked Dumpster Rentals LLC">
+    </a>
     <nav class="main" id="mainnav" aria-label="Main">
       <a href="#top">Home</a>
-      <a href="#top" aria-current="page">Dumpster Rental</a>
+      <a href="#dumpster">15 Yard Bin</a>
       <a href="#details">What Goes In</a>
-      <a href="#service">Service</a>
-      <a href="#contact">Contact Us</a>
+      <a href="#on-the-job">Service</a>
+      <a href="#request">Request</a>
     </nav>
     <div class="header-cta">
-      <div class="header-phone"><small>Tap to call now</small><a href="tel:8034272438">803-427-2438</a></div>
-      <a class="btn" href="#contact">Book Now</a>
+      <div class="header-phone">
+        <small>Call or text</small>
+        <a href="tel:+18034272438">803-427-2438</a>
+      </div>
+      <a class="btn" href="#request">Book a drop-off</a>
       <button class="btn ghost menu-toggle" id="menubtn" aria-expanded="false" aria-controls="mainnav" type="button">Menu</button>
     </div>
   </div>
 </header>
 
-<main id="top">
-  <div class="wrap">
-    <div class="crumbs"><a href="#top">Home</a><span>/</span><a href="#top">Dumpster Rental</a><span>/</span>15 Yard Dumpster</div>
+<main id="main">
+  <section class="hero" id="top" aria-label="Introduction">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="script">Bin Hooked Dumpster Rentals</p>
+        <h1>15 Yard Dumpster <em>for concrete and heavy debris.</em></h1>
+        <p class="lede">A local roll-off bin for slabs, brick, asphalt, and the rest of a heavy cleanup. You talk to the people who deliver it. Delivery and pickup are part of the rental.</p>
+        <div class="hero-actions">
+          <a class="btn" href="#request" data-service="15-concrete">Request a drop-off</a>
+          <a class="btn ghost" href="tel:+18034272438">Call 803-427-2438</a>
+        </div>
+        <ul class="pills">
+          <li>About 6 pickup loads</li>
+          <li>Up to 7 days</li>
+          <li>Residential and commercial</li>
+        </ul>
+      </div>
+      <figure class="hero-photo">
+        <img src="images/dumpster.jpg" width="2048" height="1536" alt="Black Bin Hooked roll-off dumpster sitting in a grassy field">
+      </figure>
+    </div>
+  </section>
 
-    <section class="product" aria-label="15 yard dumpster">
+  <section class="section" id="dumpster" aria-labelledby="bin-title">
+    <div class="wrap product">
       <div class="gallery">
-        <div class="main-shot"><img id="mainimg" src="bin.jpg" alt="Black Bin Hooked roll-off dumpster sitting in a field"></div>
+        <div class="main-shot">
+          <img id="mainimg" src="images/dumpster.jpg" width="2048" height="1536" alt="Black Bin Hooked roll-off dumpster sitting in a grassy field">
+        </div>
         <div class="thumbs">
-          <button type="button" aria-pressed="true" data-src="bin.jpg" data-alt="Black Bin Hooked roll-off dumpster sitting in a field" aria-label="Show dumpster photo"><img src="bin.jpg" alt=""></button>
-          <button type="button" aria-pressed="false" data-src="truck.jpg" data-alt="Bin Hooked roll-off truck at a home construction site" aria-label="Show delivery truck"><img src="truck.jpg" alt=""></button>
-          <button type="button" class="logo-thumb" aria-pressed="false" data-src="logo.png" data-alt="Bin Hooked Dumpster Rentals LLC logo" aria-label="Show logo"><img src="logo.png" alt=""></button>
+          <button type="button" aria-pressed="true" data-src="images/dumpster.jpg" data-fit="cover" data-alt="Black Bin Hooked roll-off dumpster sitting in a grassy field" aria-label="Show the dumpster in the field">
+            <img src="images/dumpster.jpg" alt="">
+          </button>
+          <button type="button" class="fit" aria-pressed="false" data-src="images/truck.jpg" data-fit="contain" data-alt="Bin Hooked roll-off truck carrying a black dumpster at a house under construction" aria-label="Show the delivery truck">
+            <img src="images/truck.jpg" alt="">
+          </button>
+          <button type="button" class="fit" aria-pressed="false" data-src="images/logo.jpg" data-fit="contain" data-alt="Bin Hooked Dumpster Rentals LLC logo" aria-label="Show the Bin Hooked logo">
+            <img src="images/logo.jpg" alt="">
+          </button>
         </div>
       </div>
 
       <div class="buy">
-        <p class="script">Bin Hooked Dumpster Rentals</p>
-        <h1>15 Yard Dumpster <em>(Concrete Only)</em></h1>
+        <p class="eyebrow">Concrete only</p>
+        <h2 id="bin-title">15 yard roll-off</h2>
         <div class="price"><strong>Call for pricing</strong><span>delivery and pickup included</span></div>
-        <p class="lede">Our 15 yard dumpster is built for heavy, dense loads like concrete, brick and asphalt. It holds about 6 pickup truck loads, and we handle prompt delivery and pickup so your project keeps moving.</p>
+        <p class="lede">Built for dense loads. It holds about 6 pickup truck loads. Tell us the address and the day, and we will confirm where to set the bin.</p>
         <table class="specs">
           <tbody>
-            <tr><th scope="row">Size</th><td>14'L x 5'W x 4'6"H</td></tr>
+            <tr><th scope="row">Size</th><td>14'L × 5'W × 4'6"H</td></tr>
             <tr><th scope="row">Capacity</th><td>15 cubic yards</td></tr>
             <tr><th scope="row">Rental period</th><td>Up to 7 days</td></tr>
             <tr><th scope="row">Time extension</th><td>Ask us for the daily rate</td></tr>
@@ -204,61 +408,190 @@ footer .contact a { font-family: var(--display); font-weight: 700; font-size: 28
           </tbody>
         </table>
         <div class="actions">
-          <button class="btn" id="addcart" type="button">Add to Cart</button>
-          <a class="btn ghost" href="tel:8034272438">Call 803-427-2438</a>
+          <a class="btn" href="#request" data-service="15-concrete">Request this bin</a>
+          <a class="btn ghost" href="tel:+18034272438">Call 803-427-2438</a>
         </div>
-        <div class="cart-note" id="cartnote" role="status">Added to your request. Call or text <a href="tel:8034272438">803-427-2438</a> with your address and delivery date and we will confirm your booking.</div>
         <ul class="checks">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m7.5 12.5 3 3 6-7"/></svg>Residential &amp; commercial</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m7.5 12.5 3 3 6-7"/></svg>Residential and commercial</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m7.5 12.5 3 3 6-7"/></svg>Multiple sizes available</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m7.5 12.5 3 3 6-7"/></svg>Fast, reliable service</li>
-        </ul>
-      </div>
-    </section>
-  </div>
-
-  <section class="band" id="details">
-    <div class="wrap cols">
-      <div class="yes">
-        <h2>Good for</h2>
-        <ul>
-          <li>Concrete slabs, driveways and sidewalks</li>
-          <li>Brick, block and asphalt</li>
-          <li>Dirt, rock and gravel</li>
-          <li>Foundation and patio tear-outs</li>
-        </ul>
-      </div>
-      <div class="no">
-        <h2>Keep out</h2>
-        <ul>
-          <li>Mixed household trash</li>
-          <li>Paint, chemicals and oil</li>
-          <li>Tires and batteries</li>
-          <li>Appliances with freon</li>
-        </ul>
-      </div>
-      <div>
-        <h2>How it works</h2>
-        <ul>
-          <li>Call or text to pick a size and date</li>
-          <li>We drop the bin where you need it</li>
-          <li>Fill it up within your rental period</li>
-          <li>We haul it away</li>
         </ul>
       </div>
     </div>
   </section>
 
-  <section class="promo" id="service">
-    <div class="wrap">
-      <img class="truck" src="truck.jpg" alt="Bin Hooked white roll-off truck carrying a black dumpster at a new home build" loading="lazy">
+  <section class="section" id="details" style="padding-top: 0" aria-label="What can go in the bin">
+    <div class="wrap cards">
+      <article class="card yes">
+        <h2>Good for</h2>
+        <ul>
+          <li>Concrete slabs, driveways, and sidewalks</li>
+          <li>Brick, block, and asphalt</li>
+          <li>Dirt, rock, and gravel</li>
+          <li>Foundation and patio tear-outs</li>
+        </ul>
+      </article>
+      <article class="card keep">
+        <h2>Keep out</h2>
+        <ul>
+          <li>Mixed household trash</li>
+          <li>Paint, chemicals, and oil</li>
+          <li>Tires and batteries</li>
+          <li>Appliances with freon</li>
+        </ul>
+      </article>
+      <article class="card">
+        <h2>How it works</h2>
+        <ul>
+          <li>Tell us the size, the address, and the day</li>
+          <li>We drop the bin where you need it</li>
+          <li>Fill it during the rental period</li>
+          <li>We haul it away</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" id="on-the-job" style="padding-top: 10px" aria-labelledby="service-title">
+    <div class="wrap showcase">
+      <figure style="margin:0">
+        <img src="images/truck.jpg" width="1536" height="1024" alt="Bin Hooked roll-off truck carrying a black dumpster at a house under construction" loading="lazy">
+      </figure>
       <div>
-        <h2>Big enough to get the job done. <span>Small enough to care.</span></h2>
-        <p>Bin Hooked is a local roll-off dumpster company. Whether you are clearing a job site or cleaning out the property, you talk to the people who deliver the bin.</p>
-        <div class="callbox" id="contact">
-          <small>Call or text today!</small>
-          <a href="tel:8034272438">803-427-2438</a>
+        <p class="eyebrow">On the job</p>
+        <h2 id="service-title">Big enough to get the job done. <span>Small enough to care.</span></h2>
+        <p>Bin Hooked is a local roll-off company. Whether you are clearing a job site or cleaning out the property, you talk to the people who deliver the bin.</p>
+        <div class="callbox">
+          <small>Call or text today</small>
+          <a href="tel:+18034272438">803-427-2438</a>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="request" aria-labelledby="request-title" style="padding-top: 20px">
+    <div class="wrap request">
+      <div>
+        <p class="eyebrow">Appointment request</p>
+        <h2 id="request-title">Tell us where to set the bin.</h2>
+        <p class="lede">Send the address, the day, and what you are hauling. We confirm the drop-off, the size, and the price by phone or text.</p>
+        <ul class="ready">
+          <li><b>01</b><span>Job site address and the best day for delivery</span></li>
+          <li><b>02</b><span>What is going in the bin, especially if it is concrete</span></li>
+          <li><b>03</b><span>A phone number we can reach the same day</span></li>
+        </ul>
+        <div class="side-call">
+          <p class="eyebrow">Prefer to call</p>
+          <a href="tel:+18034272438">803-427-2438</a>
+        </div>
+      </div>
+
+      <div class="form-card">
+        <form id="appt" novalidate>
+          <div class="hp" aria-hidden="true">
+            <label for="company">Company website</label>
+            <input id="company" name="company" tabindex="-1" autocomplete="off">
+          </div>
+          <div class="fields">
+            <div class="field">
+              <label for="name">Full name <span aria-hidden="true">*</span></label>
+              <input id="name" name="name" autocomplete="name" maxlength="80" required aria-describedby="name-error">
+              <p class="field-error" id="name-error"></p>
+            </div>
+            <div class="field">
+              <label for="phone">Phone <span aria-hidden="true">*</span></label>
+              <input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" maxlength="24" required aria-describedby="phone-error">
+              <p class="field-error" id="phone-error"></p>
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" autocomplete="email" maxlength="120" aria-describedby="email-error">
+              <p class="field-error" id="email-error"></p>
+            </div>
+            <div class="field">
+              <label for="city">City and state <span aria-hidden="true">*</span></label>
+              <input id="city" name="city" autocomplete="address-level2" maxlength="80" required aria-describedby="city-error">
+              <p class="field-error" id="city-error"></p>
+            </div>
+            <div class="field span-2">
+              <label for="street">Job site address <span aria-hidden="true">*</span></label>
+              <input id="street" name="street" autocomplete="street-address" maxlength="140" required aria-describedby="street-error">
+              <p class="field-error" id="street-error"></p>
+            </div>
+            <div class="field">
+              <label for="service">Service <span aria-hidden="true">*</span></label>
+              <select id="service" name="service" required aria-describedby="service-error">
+                <option value="">Choose a service</option>
+                <option value="15-concrete">15 yard dumpster, concrete only</option>
+                <option value="delivery">Dumpster delivery</option>
+                <option value="pickup">Pickup and haul-away</option>
+                <option value="swap">Swap for an empty bin</option>
+                <option value="other">Not sure yet</option>
+              </select>
+              <p class="field-error" id="service-error"></p>
+            </div>
+            <div class="field">
+              <label for="date">Preferred date <span aria-hidden="true">*</span></label>
+              <input id="date" name="date" type="date" required aria-describedby="date-error">
+              <p class="field-error" id="date-error"></p>
+            </div>
+            <div class="field">
+              <label for="window">Time of day</label>
+              <select id="window" name="window">
+                <option>Flexible</option>
+                <option>Morning</option>
+                <option>Afternoon</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="rental">Rental length</label>
+              <select id="rental" name="rental">
+                <option>Up to 7 days</option>
+                <option>A few days</option>
+                <option>Longer — ask about the daily rate</option>
+              </select>
+            </div>
+            <div class="field span-2">
+              <label for="reach">How should we reach you?</label>
+              <select id="reach" name="reach">
+                <option>Call or text</option>
+                <option>Text</option>
+                <option>Call</option>
+              </select>
+            </div>
+            <div class="field span-2">
+              <label for="notes">What are you hauling?</label>
+              <textarea id="notes" name="notes" maxlength="400" placeholder="Driveway tear-out, a slab, and some block."></textarea>
+            </div>
+            <div class="field span-2">
+              <label class="consent" for="consent">
+                <input id="consent" name="consent" type="checkbox" required aria-describedby="consent-error">
+                <span>Bin Hooked can call or text this number about my request. <span aria-hidden="true">*</span></span>
+              </label>
+              <p class="field-error" id="consent-error"></p>
+            </div>
+            <div class="span-2">
+              <button class="btn full" type="submit">Send appointment request</button>
+              <p class="form-note">Sending prepares a text to 803-427-2438. Open that text and press send in your messaging app so we receive the request.</p>
+            </div>
+          </div>
+        </form>
+
+        <div class="thanks" id="thanks" hidden>
+          <h3 tabindex="-1" id="thanks-title">Request ready to text</h3>
+          <p id="thanks-lead">Your details are filled into a text to Bin Hooked. Press send in your messaging app and we will confirm the drop-off.</p>
+          <dl class="summary" id="summary"></dl>
+          <div class="thanks-actions">
+            <a class="btn" id="textlink" href="sms:+18034272438">Open text message</a>
+            <button class="btn ghost" id="copybtn" type="button">Copy details</button>
+            <a class="btn ghost" href="tel:+18034272438">Call 803-427-2438</a>
+          </div>
+          <p class="copy-status" id="copystatus" role="status"></p>
+          <p class="form-note"><button class="btn ghost" id="editbtn" type="button">Edit request</button></p>
+        </div>
+        <noscript>
+          <p>Call or text <a href="tel:+18034272438">803-427-2438</a> to book a drop-off. The request form needs JavaScript to prepare the text.</p>
+        </noscript>
       </div>
     </div>
   </section>
@@ -266,17 +599,19 @@ footer .contact a { font-family: var(--display); font-weight: 700; font-size: 28
 
 <footer>
   <div class="wrap">
-    <img src="logo.png" alt="Bin Hooked Dumpster Rentals LLC">
+    <a class="brand" href="#top" aria-label="Back to top">
+      <img src="images/logo.jpg" width="1254" height="1254" alt="">
+    </a>
     <nav aria-label="Footer">
       <a href="#top">Home</a>
-      <a href="#top">Dumpster Rental</a>
+      <a href="#dumpster">15 Yard Bin</a>
       <a href="#details">What Goes In</a>
-      <a href="#service">Service</a>
-      <a href="#contact">Contact Us</a>
+      <a href="#on-the-job">Service</a>
+      <a href="#request">Request</a>
     </nav>
-    <div class="contact"><a href="tel:8034272438">803-427-2438</a></div>
+    <div class="contact"><a href="tel:+18034272438">803-427-2438</a></div>
   </div>
-  <div class="legal">&copy; Bin Hooked Dumpster Rentals LLC. All rights reserved.</div>
+  <div class="legal">&copy; 2026 Bin Hooked Dumpster Rentals LLC. All rights reserved.</div>
 </footer>
 
 <script>
@@ -287,20 +622,170 @@ footer .contact a { font-family: var(--display); font-weight: 700; font-size: 28
     b.addEventListener('click', function () {
       main.src = b.getAttribute('data-src');
       main.alt = b.getAttribute('data-alt');
-      main.style.objectFit = b.classList.contains('logo-thumb') ? 'contain' : 'cover';
-      main.parentNode.style.background = b.classList.contains('logo-thumb') ? '#000' : '';
-      thumbs.forEach(function (o) { o.setAttribute('aria-pressed', o === b ? 'true' : 'false'); });
+      main.classList.toggle('contain', b.getAttribute('data-fit') === 'contain');
+      thumbs.forEach(function (o) {
+        o.setAttribute('aria-pressed', o === b ? 'true' : 'false');
+      });
     });
   });
-  document.getElementById('addcart').addEventListener('click', function () {
-    document.getElementById('cartnote').classList.add('show');
-  });
-  var mb = document.getElementById('menubtn'), nav = document.getElementById('mainnav');
+
+  var mb = document.getElementById('menubtn');
+  var nav = document.getElementById('mainnav');
   mb.addEventListener('click', function () {
     var open = nav.classList.toggle('open');
     mb.setAttribute('aria-expanded', open ? 'true' : 'false');
   });
-  nav.addEventListener('click', function () { nav.classList.remove('open'); mb.setAttribute('aria-expanded', 'false'); });
+  nav.addEventListener('click', function (e) {
+    if (e.target.closest('a')) {
+      nav.classList.remove('open');
+      mb.setAttribute('aria-expanded', 'false');
+    }
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      nav.classList.remove('open');
+      mb.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  var service = document.getElementById('service');
+  document.querySelectorAll('[data-service]').forEach(function (link) {
+    link.addEventListener('click', function () {
+      service.value = link.getAttribute('data-service');
+      clearField(service);
+    });
+  });
+
+  var date = document.getElementById('date');
+  var now = new Date();
+  date.min = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0') + '-' + String(now.getDate()).padStart(2, '0');
+
+  var form = document.getElementById('appt');
+  var thanks = document.getElementById('thanks');
+  var summaryText = '';
+
+  function clearField(el) {
+    var err = document.getElementById(el.id + '-error');
+    if (err) err.textContent = '';
+    el.removeAttribute('aria-invalid');
+  }
+
+  form.addEventListener('input', function (e) {
+    if (e.target && e.target.id) clearField(e.target);
+  });
+
+  function mark(el, msg, first) {
+    var err = document.getElementById(el.id + '-error');
+    el.setAttribute('aria-invalid', 'true');
+    if (err) err.textContent = msg;
+    if (!first.el) first.el = el;
+  }
+
+  function prettyDate(iso) {
+    var parts = iso.split('-');
+    if (parts.length !== 3) return iso;
+    var d = new Date(Number(parts[0]), Number(parts[1]) - 1, Number(parts[2]));
+    return d.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+  }
+
+  function addRow(dl, label, value) {
+    var dt = document.createElement('dt');
+    dt.textContent = label;
+    var dd = document.createElement('dd');
+    dd.textContent = value;
+    dl.appendChild(dt);
+    dl.appendChild(dd);
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (document.getElementById('company').value) return;
+
+    var first = { el: null };
+    var name = document.getElementById('name');
+    var phone = document.getElementById('phone');
+    var email = document.getElementById('email');
+    var city = document.getElementById('city');
+    var street = document.getElementById('street');
+    var consent = document.getElementById('consent');
+    [name, phone, email, city, street, service, date, consent].forEach(clearField);
+
+    if (name.value.trim().length < 2) mark(name, 'Enter your name.', first);
+    var digits = phone.value.replace(/\D/g, '');
+    if (digits.length < 10) mark(phone, 'Enter a phone number with at least 10 digits.', first);
+    if (email.value.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())) {
+      mark(email, 'Enter a valid email, or leave it blank.', first);
+    }
+    if (city.value.trim().length < 2) mark(city, 'Enter the city and state.', first);
+    if (street.value.trim().length < 5) mark(street, 'Enter the job site address.', first);
+    if (!service.value) mark(service, 'Choose a service.', first);
+    if (!date.value) mark(date, 'Choose a preferred date.', first);
+    else if (date.value < date.min) mark(date, 'Choose today or a later day.', first);
+    if (!consent.checked) mark(consent, 'Confirm we can call or text you about this request.', first);
+    if (first.el) {
+      first.el.focus();
+      return;
+    }
+
+    var serviceText = service.options[service.selectedIndex].text;
+    var windowText = document.getElementById('window').value;
+    var rentalText = document.getElementById('rental').value;
+    var reachText = document.getElementById('reach').value;
+    var notes = document.getElementById('notes').value.trim();
+    var rows = [
+      ['Name', name.value.trim()],
+      ['Phone', phone.value.trim()],
+      ['Email', email.value.trim() || 'not given'],
+      ['Address', street.value.trim()],
+      ['City', city.value.trim()],
+      ['Service', serviceText],
+      ['Date', prettyDate(date.value)],
+      ['Time', windowText],
+      ['Rental', rentalText],
+      ['Reach by', reachText],
+      ['Hauling', notes || 'not given']
+    ];
+    summaryText = ['Bin Hooked appointment request'].concat(rows.map(function (row) {
+      return row[0] + ': ' + row[1];
+    })).join('\n');
+
+    var dl = document.getElementById('summary');
+    dl.textContent = '';
+    rows.forEach(function (row) { addRow(dl, row[0], row[1]); });
+
+    var smsBody = summaryText.length > 700 ? summaryText.slice(0, 697) + '...' : summaryText;
+    var sms = 'sms:+18034272438?&body=' + encodeURIComponent(smsBody);
+    document.getElementById('textlink').href = sms;
+    document.getElementById('copystatus').textContent = '';
+    document.getElementById('copybtn').textContent = 'Copy details';
+
+    form.hidden = true;
+    thanks.hidden = false;
+    document.getElementById('thanks-title').focus();
+    thanks.scrollIntoView({ block: 'center' });
+  });
+
+  document.getElementById('copybtn').addEventListener('click', function () {
+    var btn = document.getElementById('copybtn');
+    var status = document.getElementById('copystatus');
+    function ok() {
+      btn.textContent = 'Copied';
+      status.textContent = 'Details copied. Paste them into a text to 803-427-2438.';
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(summaryText).then(ok).catch(function () {
+        status.textContent = 'Select the details above and copy them by hand.';
+      });
+    } else {
+      status.textContent = 'Select the details above and copy them by hand.';
+    }
+  });
+
+  document.getElementById('editbtn').addEventListener('click', function () {
+    thanks.hidden = true;
+    form.hidden = false;
+    document.getElementById('name').focus();
+  });
 })();
 </script>
 </body>
