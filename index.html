@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#071012">
-<meta name="description" content="Bin Hooked Dumpster Rentals LLC drops 15-yard roll-off dumpsters for concrete and heavy debris. Call or text 803-427-2438, or request a delivery date.">
+<meta name="description" content="Bin Hooked Dumpster Rentals LLC drops 15, 20, and 30 yard roll-off dumpsters by the week or the month. Call or text 803-427-2438, or request a delivery date.">
 <title>Bin Hooked Dumpster Rentals | Request a Drop-Off</title>
 <link rel="icon" href="images/logo.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -175,6 +175,25 @@ table.specs td { font-weight: 600; }
   text-transform: uppercase; letter-spacing: .05em; font-size: 18px;
 }
 .checks svg { flex: none; width: 22px; height: 22px; color: var(--teal-bright); }
+.size-pick { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin: 0 0 12px; }
+.size-card, .term-pick button {
+  background: #0b1113; color: var(--ink); border: 2px solid var(--line); cursor: pointer; text-align: left;
+}
+.size-card { border-radius: 14px; padding: 12px 12px 10px; }
+.size-card b {
+  display: block; font-family: var(--display); font-size: 22px; font-weight: 800; letter-spacing: .04em;
+  text-transform: uppercase; line-height: 1;
+}
+.size-card span { display: block; color: var(--muted); font-size: 14px; line-height: 1.35; margin-top: 6px; }
+.size-card[aria-pressed="true"], .term-pick button[aria-pressed="true"] {
+  border-color: var(--teal-bright); box-shadow: 0 0 0 3px rgba(62, 201, 212, 0.22);
+}
+.term-pick { display: flex; gap: 10px; margin: 0 0 16px; }
+.term-pick button {
+  flex: 1; border-radius: 999px; padding: 10px 12px; text-align: center;
+  font-family: var(--display); font-weight: 700; letter-spacing: .08em; text-transform: uppercase; font-size: 16px;
+}
+.term-pick button[aria-pressed="true"] { background: var(--teal); color: white; }
 
 .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
 .card {
@@ -307,6 +326,7 @@ footer .contact a { font-family: var(--display); font-weight: 700; font-size: 28
   .hero h1 { font-size: 48px; }
   .section { padding: 56px 0; }
   .form-card { padding: 18px; }
+  .size-pick { grid-template-columns: 1fr; }
   .summary { grid-template-columns: 1fr; gap: 2px; }
   .summary dd { margin-bottom: 8px; }
   .btn { font-size: 16px; }
@@ -334,7 +354,7 @@ footer .contact a { font-family: var(--display); font-weight: 700; font-size: 28
     </a>
     <nav class="main" id="mainnav" aria-label="Main">
       <a href="#top">Home</a>
-      <a href="#dumpster">15 Yard Bin</a>
+      <a href="#dumpster">Sizes</a>
       <a href="#details">What Goes In</a>
       <a href="#on-the-job">Service</a>
       <a href="#request">Request</a>
@@ -355,15 +375,15 @@ footer .contact a { font-family: var(--display); font-weight: 700; font-size: 28
     <div class="wrap hero-grid">
       <div>
         <p class="script">Bin Hooked Dumpster Rentals</p>
-        <h1>15 Yard Dumpster <em>for concrete and heavy debris.</em></h1>
-        <p class="lede">A local roll-off bin for slabs, brick, asphalt, and the rest of a heavy cleanup. You talk to the people who deliver it. Delivery and pickup are part of the rental.</p>
+        <h1>Roll-off dumpsters <em>in 15, 20, and 30 yards.</em></h1>
+        <p class="lede">Local bins for cleanouts, job sites, and heavy debris. Pick a size, then a weekly or monthly rental. Delivery and pickup are part of the rental.</p>
         <div class="hero-actions">
-          <a class="btn" href="#request" data-service="15-concrete">Request a drop-off</a>
+          <a class="btn" href="#dumpster">Choose a size</a>
           <a class="btn ghost" href="tel:+18034272438">Call 803-427-2438</a>
         </div>
         <ul class="pills">
-          <li>About 6 pickup loads</li>
-          <li>Up to 7 days</li>
+          <li>15, 20, and 30 yard</li>
+          <li>Weekly or monthly</li>
           <li>Residential and commercial</li>
         </ul>
       </div>
@@ -393,22 +413,39 @@ footer .contact a { font-family: var(--display); font-weight: 700; font-size: 28
       </div>
 
       <div class="buy">
-        <p class="eyebrow">Concrete only</p>
-        <h2 id="bin-title">15 yard roll-off</h2>
+        <p class="eyebrow">Weekly or monthly</p>
+        <h2 id="bin-title">Pick a dumpster</h2>
         <div class="price"><strong>Call for pricing</strong><span>delivery and pickup included</span></div>
-        <p class="lede">Built for dense loads. It holds about 6 pickup truck loads. Tell us the address and the day, and we will confirm where to set the bin.</p>
+        <p class="lede">All three bins are 18 feet long and 8 feet wide. The height is what changes the yardage. Choose a size and a weekly or monthly rental, then tell us where to set it.</p>
+        <div class="size-pick" role="group" aria-label="Dumpster size">
+          <button type="button" class="size-card" data-size="15" aria-pressed="true">
+            <b>15 Yard</b>
+            <span>18'L × 8'W × 4.5'H</span>
+          </button>
+          <button type="button" class="size-card" data-size="20" aria-pressed="false">
+            <b>20 Yard</b>
+            <span>18'L × 8'W × 5.5'H</span>
+          </button>
+          <button type="button" class="size-card" data-size="30" aria-pressed="false">
+            <b>30 Yard</b>
+            <span>18'L × 8'W × 7'H</span>
+          </button>
+        </div>
+        <div class="term-pick" role="group" aria-label="Rental term">
+          <button type="button" data-term="weekly" aria-pressed="true">Weekly</button>
+          <button type="button" data-term="monthly" aria-pressed="false">Monthly</button>
+        </div>
         <table class="specs">
           <tbody>
-            <tr><th scope="row">Size</th><td>14'L × 5'W × 4'6"H</td></tr>
-            <tr><th scope="row">Capacity</th><td>15 cubic yards</td></tr>
-            <tr><th scope="row">Rental period</th><td>Up to 7 days</td></tr>
-            <tr><th scope="row">Time extension</th><td>Ask us for the daily rate</td></tr>
+            <tr><th scope="row">Size</th><td id="spec-dim">18'L × 8'W × 4.5'H</td></tr>
+            <tr><th scope="row">Capacity</th><td id="spec-cap">15 cubic yards</td></tr>
+            <tr><th scope="row">Rental</th><td id="spec-term">Weekly</td></tr>
             <tr><th scope="row">Weight included</th><td>Ask us for your weight allowance</td></tr>
             <tr><th scope="row">Extra weight</th><td>Billed per ton over the allowance</td></tr>
           </tbody>
         </table>
         <div class="actions">
-          <a class="btn" href="#request" data-service="15-concrete">Request this bin</a>
+          <a class="btn" href="#request" id="request-bin">Request this bin</a>
           <a class="btn ghost" href="tel:+18034272438">Call 803-427-2438</a>
         </div>
         <ul class="checks">
@@ -445,7 +482,7 @@ footer .contact a { font-family: var(--display); font-weight: 700; font-size: 28
         <ul>
           <li>Tell us the size, the address, and the day</li>
           <li>We drop the bin where you need it</li>
-          <li>Fill it during the rental period</li>
+          <li>Fill it during the weekly or monthly rental</li>
           <li>We haul it away</li>
         </ul>
       </article>
@@ -477,7 +514,7 @@ footer .contact a { font-family: var(--display); font-weight: 700; font-size: 28
         <p class="lede">Send the address, the day, and what you are hauling. We confirm the drop-off, the size, and the price by phone or text.</p>
         <ul class="ready">
           <li><b>01</b><span>Job site address and the best day for delivery</span></li>
-          <li><b>02</b><span>What is going in the bin, especially if it is concrete</span></li>
+          <li><b>02</b><span>15, 20, or 30 yard, and weekly or monthly</span></li>
           <li><b>03</b><span>A phone number we can reach the same day</span></li>
         </ul>
         <div class="side-call">
@@ -519,14 +556,12 @@ footer .contact a { font-family: var(--display); font-weight: 700; font-size: 28
               <p class="field-error" id="street-error"></p>
             </div>
             <div class="field">
-              <label for="service">Service <span aria-hidden="true">*</span></label>
+              <label for="service">Dumpster size <span aria-hidden="true">*</span></label>
               <select id="service" name="service" required aria-describedby="service-error">
-                <option value="">Choose a service</option>
-                <option value="15-concrete">15 yard dumpster, concrete only</option>
-                <option value="delivery">Dumpster delivery</option>
-                <option value="pickup">Pickup and haul-away</option>
-                <option value="swap">Swap for an empty bin</option>
-                <option value="other">Not sure yet</option>
+                <option value="">Choose a size</option>
+                <option value="15">15 yard — 18'L × 8'W × 4.5'H</option>
+                <option value="20">20 yard — 18'L × 8'W × 5.5'H</option>
+                <option value="30">30 yard — 18'L × 8'W × 7'H</option>
               </select>
               <p class="field-error" id="service-error"></p>
             </div>
@@ -544,12 +579,13 @@ footer .contact a { font-family: var(--display); font-weight: 700; font-size: 28
               </select>
             </div>
             <div class="field">
-              <label for="rental">Rental length</label>
-              <select id="rental" name="rental">
-                <option>Up to 7 days</option>
-                <option>A few days</option>
-                <option>Longer — ask about the daily rate</option>
+              <label for="rental">Rental <span aria-hidden="true">*</span></label>
+              <select id="rental" name="rental" required aria-describedby="rental-error">
+                <option value="">Choose weekly or monthly</option>
+                <option value="weekly">Weekly</option>
+                <option value="monthly">Monthly</option>
               </select>
+              <p class="field-error" id="rental-error"></p>
             </div>
             <div class="field span-2">
               <label for="reach">How should we reach you?</label>
@@ -604,7 +640,7 @@ footer .contact a { font-family: var(--display); font-weight: 700; font-size: 28
     </a>
     <nav aria-label="Footer">
       <a href="#top">Home</a>
-      <a href="#dumpster">15 Yard Bin</a>
+      <a href="#dumpster">Sizes</a>
       <a href="#details">What Goes In</a>
       <a href="#on-the-job">Service</a>
       <a href="#request">Request</a>
@@ -649,11 +685,43 @@ footer .contact a { font-family: var(--display); font-weight: 700; font-size: 28
   });
 
   var service = document.getElementById('service');
-  document.querySelectorAll('[data-service]').forEach(function (link) {
-    link.addEventListener('click', function () {
-      service.value = link.getAttribute('data-service');
-      clearField(service);
+  var rental = document.getElementById('rental');
+  var sizes = {
+    '15': { dim: "18'L × 8'W × 4.5'H", cap: '15 cubic yards' },
+    '20': { dim: "18'L × 8'W × 5.5'H", cap: '20 cubic yards' },
+    '30': { dim: "18'L × 8'W × 7'H", cap: '30 cubic yards' }
+  };
+  var selectedSize = '15';
+  var selectedTerm = 'weekly';
+  function paintChoice() {
+    var pick = sizes[selectedSize];
+    document.getElementById('spec-dim').textContent = pick.dim;
+    document.getElementById('spec-cap').textContent = pick.cap;
+    document.getElementById('spec-term').textContent = selectedTerm === 'weekly' ? 'Weekly' : 'Monthly';
+    document.querySelectorAll('.size-card').forEach(function (b) {
+      b.setAttribute('aria-pressed', b.getAttribute('data-size') === selectedSize ? 'true' : 'false');
     });
+    document.querySelectorAll('.term-pick button').forEach(function (b) {
+      b.setAttribute('aria-pressed', b.getAttribute('data-term') === selectedTerm ? 'true' : 'false');
+    });
+  }
+  document.querySelectorAll('.size-card').forEach(function (b) {
+    b.addEventListener('click', function () {
+      selectedSize = b.getAttribute('data-size');
+      paintChoice();
+    });
+  });
+  document.querySelectorAll('.term-pick button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      selectedTerm = b.getAttribute('data-term');
+      paintChoice();
+    });
+  });
+  document.getElementById('request-bin').addEventListener('click', function () {
+    service.value = selectedSize;
+    rental.value = selectedTerm;
+    clearField(service);
+    clearField(rental);
   });
 
   var date = document.getElementById('date');
@@ -708,7 +776,7 @@ footer .contact a { font-family: var(--display); font-weight: 700; font-size: 28
     var city = document.getElementById('city');
     var street = document.getElementById('street');
     var consent = document.getElementById('consent');
-    [name, phone, email, city, street, service, date, consent].forEach(clearField);
+    [name, phone, email, city, street, service, rental, date, consent].forEach(clearField);
 
     if (name.value.trim().length < 2) mark(name, 'Enter your name.', first);
     var digits = phone.value.replace(/\D/g, '');
@@ -718,7 +786,8 @@ footer .contact a { font-family: var(--display); font-weight: 700; font-size: 28
     }
     if (city.value.trim().length < 2) mark(city, 'Enter the city and state.', first);
     if (street.value.trim().length < 5) mark(street, 'Enter the job site address.', first);
-    if (!service.value) mark(service, 'Choose a service.', first);
+    if (!service.value) mark(service, 'Choose a dumpster size.', first);
+    if (!rental.value) mark(rental, 'Choose weekly or monthly.', first);
     if (!date.value) mark(date, 'Choose a preferred date.', first);
     else if (date.value < date.min) mark(date, 'Choose today or a later day.', first);
     if (!consent.checked) mark(consent, 'Confirm we can call or text you about this request.', first);
@@ -729,7 +798,7 @@ footer .contact a { font-family: var(--display); font-weight: 700; font-size: 28
 
     var serviceText = service.options[service.selectedIndex].text;
     var windowText = document.getElementById('window').value;
-    var rentalText = document.getElementById('rental').value;
+    var rentalText = rental.options[rental.selectedIndex].text;
     var reachText = document.getElementById('reach').value;
     var notes = document.getElementById('notes').value.trim();
     var rows = [
@@ -738,7 +807,7 @@ footer .contact a { font-family: var(--display); font-weight: 700; font-size: 28
       ['Email', email.value.trim() || 'not given'],
       ['Address', street.value.trim()],
       ['City', city.value.trim()],
-      ['Service', serviceText],
+      ['Size', serviceText],
       ['Date', prettyDate(date.value)],
       ['Time', windowText],
       ['Rental', rentalText],
